@@ -1,0 +1,41 @@
+context:
+  version: 0.26.7
+
+package:
+  name: csharpier
+  version: ${{ version }}
+
+source:
+  git: https://github.com/belav/csharpier
+  tag: ${{ version }}
+
+build:
+  number: 0
+  noarch: generic
+
+requirements:
+  build:
+    - git
+    - sed
+  host:
+    - dotnet
+    - nuget-license
+  run:
+    - dotnet
+
+tests:
+  - script:
+      - dotnet-csharpier --help
+
+about:
+  license: MIT
+  license_file:
+    - LICENSE
+    - license-files/
+  summary: CSharpier is an opinionated code formatter for c#.
+  homepage: https://github.com/belav/csharpier
+  repository: https://github.com/belav/csharpier
+
+extra:
+  recipe-maintainers:
+    - danielnachun

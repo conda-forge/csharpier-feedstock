@@ -4,6 +4,7 @@ set -o xtrace -o nounset -o pipefail -o errexit
 
 mkdir -p ${PREFIX}/bin
 mkdir -p ${PREFIX}/libexec/${PKG_NAME}
+ln -sf ${DOTNET_ROOT}/dotnet ${PREFIX}/bin
 
 # Update System.Text.Json to latest version to fix security warning
 # Remove with next release
@@ -21,6 +22,7 @@ tee ${PREFIX}/bin/dotnet-csharpier << EOF
 #!/bin/sh
 exec \${DOTNET_ROOT}/dotnet exec \${CONDA_PREFIX}/libexec/csharpier/dotnet-csharpier.dll "\$@"
 EOF
+chmod +x ${PREFIX}/bin/dotnet-csharpier
 
 tee ${PREFIX}/bin/dotnet-csharpier.cmd << EOF
 call %DOTNET_ROOT%\dotnet exec %CONDA_PREFIX\libexec\csharpier\dotnet-csharpier.dll %*
