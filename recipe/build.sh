@@ -6,11 +6,8 @@ mkdir -p ${PREFIX}/bin
 mkdir -p ${PREFIX}/libexec/${PKG_NAME}
 ln -sf ${DOTNET_ROOT}/dotnet ${PREFIX}/bin
 
-# Update System.Text.Json to latest version to fix security warning
-# Remove with next release
-sed -i 's/"System.Text.Json" Version="7.0.3"/"System.Text.Json" Version="8.0.4"/' Directory.Packages.props
-
 # Build package with dotnet publish
+sed -i 's/8.0.4/8.0.5/' Directory.Packages.props
 rm -rf global.json
 framework_version="$(dotnet --version | sed -e 's/\..*//g').0"
 dotnet publish --no-self-contained Src/CSharpier.Cli/CSharpier.Cli.csproj --output ${PREFIX}/libexec/${PKG_NAME} --framework net${framework_version}
