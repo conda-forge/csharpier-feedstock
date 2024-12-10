@@ -31,3 +31,5 @@ tee ignored_packages.json << EOF
 EOF
 
 dotnet-project-licenses --input Src/CSharpier.Cli/CSharpier.Cli.csproj -t -d license-files -ignore ignored_packages.json
+
+rm ${PREFIX}/bin/dotnet
