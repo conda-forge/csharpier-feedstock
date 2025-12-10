@@ -17,12 +17,12 @@ rm ${PREFIX}/libexec/${PKG_NAME}/CSharpier
 # Create bash and batch wrappers
 tee ${PREFIX}/bin/dotnet-csharpier << EOF
 #!/bin/sh
-exec \${DOTNET_ROOT}/dotnet exec \${CONDA_PREFIX}/libexec/csharpier/Csharpier.dll "\$@"
+exec \${DOTNET_ROOT}/dotnet exec \${CONDA_PREFIX}/libexec/csharpier/CSharpier.dll "\$@"
 EOF
 chmod +x ${PREFIX}/bin/dotnet-csharpier
 
 tee ${PREFIX}/bin/dotnet-csharpier.cmd << EOF
-call %DOTNET_ROOT%\dotnet exec %CONDA_PREFIX\libexec\csharpier\Csharpier.dll %*
+call %DOTNET_ROOT%\dotnet exec %CONDA_PREFIX\libexec\csharpier\CSharpier.dll %*
 EOF
 
 # Download dependency licenses with dotnet-project-licenses
