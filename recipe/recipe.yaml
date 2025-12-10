@@ -1,13 +1,16 @@
 context:
-  version: 0.30.6
+  version: 1.2.1
 
 package:
   name: csharpier
   version: ${{ version }}
 
 source:
-  git: https://github.com/belav/csharpier
-  tag: ${{ version }}
+  - git: https://github.com/belav/csharpier
+    tag: ${{ version }}
+  - url: https://github.com/belav/csharpier/archive/refs/tags/${{ version }}.tar.gz
+    sha256: 67010396c3525898db513277ad34a65c391cc62ee780286511e601ec693926de
+    target_directory: archive
 
 build:
   number: 0
